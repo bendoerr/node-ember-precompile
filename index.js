@@ -2,7 +2,7 @@ var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
 
-var HANDLEBARSJS = fs.readFileSync(__dirname + '/vendor/handlebars-1.0.rc.1.js', 'utf8')
+var HANDLEBARSJS = fs.readFileSync(__dirname + '/vendor/handlebars-1.0.rc.2.js', 'utf8')
 var EMBERJS = fs.readFileSync(__dirname + '/vendor/ember-1.0.pre.min.js', 'utf8')
 
 module.exports = function (file) {
@@ -10,7 +10,7 @@ module.exports = function (file) {
   var jQuery = function () { return jQuery }
   jQuery.ready = function () { return jQuery }
   jQuery.inArray = function () { return jQuery }
-  jQuery.jquery = "1.7.1"
+  jQuery.jquery = "1.9"
   jQuery.event = { fixHooks: {} }
 
   //dummy DOM element
@@ -57,7 +57,7 @@ module.exports = function (file) {
   // adding template to Ember.TEMPLATES when it is required
   var fileName = path.basename(file)
   var namedTemplateJs = 'Ember.TEMPLATES["' +
-    fileName.replace(/.handlebars/, '') +
+    fileName.replace(/.handlebars|.hbs/, '') +
     '"] = Ember.Handlebars.template(' + context.templatejs + ');'
 
   return namedTemplateJs;
