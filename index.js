@@ -2,8 +2,8 @@ var fs = require('fs');
 var path = require('path');
 var vm = require('vm');
 
-var HANDLEBARSJS = fs.readFileSync(__dirname + '/vendor/handlebars-1.0.rc.2.js', 'utf8')
-var EMBERJS = fs.readFileSync(__dirname + '/vendor/ember-1.0.pre.min.js', 'utf8')
+var HANDLEBARSJS = fs.readFileSync(__dirname + '/vendor/handlebars-1.0.rc.3.js', 'utf8')
+var EMBERJS = fs.readFileSync(__dirname + '/vendor/ember-1.0.0-rc.1.min.js', 'utf8')
 
 module.exports = function (file) {
   //dummy jQuery
@@ -16,7 +16,9 @@ module.exports = function (file) {
   //dummy DOM element
   var element = {
     firstChild: function () { return element },
-    innerHTML: function () { return element }
+    innerHTML: function () { return element },
+//    childNodes: function() { return [ element, element, element ] },
+//    nodeValue: function() { return "" }
   }
 
   var sandbox = {
